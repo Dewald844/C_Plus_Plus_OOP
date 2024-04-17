@@ -2,7 +2,7 @@
 
 void printMenu () {
     std::cout << "+ ----------------------------- +" << std::endl;
-    std::cout << "|            Main menu          |" << std::endl;
+    std::cout << "|           Main menu           |" << std::endl;
     std::cout << "+ ----------------------------- +" << std::endl;
     std::cout << "|     1 : Print help            |" << std::endl;
     std::cout << "|     2 : Print exhange rates   |" << std::endl;
