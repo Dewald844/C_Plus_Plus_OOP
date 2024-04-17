@@ -2,5 +2,6 @@
 
 int main () {
     std::cout << "Hello World" << std::endl;
-    return 0;
+    std::cout << "This was added by vim" << std::endl;
+	return 0;
 }
