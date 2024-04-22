@@ -1,6 +1,17 @@
 #include <iostream>
 #include <map>
 
+enum OrderType {Bid, Ask};
+
+class Order {
+    public:
+        OrderType Type;
+        std::string DateTime;
+        std::string Product;
+        double Amount;
+        double Price;
+};
+
 void printMenu () {
     std::cout << "+ ----------------------------- +" << std::endl;
     std::cout << "|           Main menu           |" << std::endl;
@@ -51,6 +62,35 @@ void advanceToNextTimeSlice() {
 
 void exitProgram() {
     std::cout << "Goodbye " << std::endl;
+}
+
+void printUserChoice (int userChoice) {
+    switch (userChoice) {
+        case 1:
+            printHelp();
+            break;
+        case 2:
+            printExchangeRates();
+            break;
+        case 3:
+            makeOffer();
+            break;
+        case 4:
+            placeBid();
+            break;
+        case 5:
+            printWallet();
+            break;
+        case 6:
+            advanceToNextTimeSlice();
+            break;
+        case 7:
+            exitProgram();
+            break;
+        default:
+            printMenu();
+            break;
+    }
 }
 
 //Build Map of function pointers
