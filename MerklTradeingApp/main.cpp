@@ -1,15 +1,32 @@
 #include <iostream>
+#include <vector>
 #include <map>
+#include <string>
 
-enum OrderType {Bid, Ask};
+enum OrderBookType {Bid, Ask};
 
-class Order {
-    public:
-        OrderType Type;
-        std::string DateTime;
-        std::string Product;
-        double Amount;
-        double Price;
+class OrderBookEntry {
+   public:
+
+      OrderBookEntry(
+                    OrderBookType orderType,
+                    std::string timestamp,
+                    std::string product,
+                    double amount,
+                    double price)
+         {
+            this->orderType = orderType;
+            this->timestamp = timestamp;
+            this->product = product;
+            this->amount = amount;
+            this->price = price;
+         };
+
+      OrderBookType orderType;
+      std::string timestamp;
+      std::string product;
+      double amount;
+      double price;
 };
 
 void printMenu () {
@@ -64,35 +81,6 @@ void exitProgram() {
     std::cout << "Goodbye " << std::endl;
 }
 
-void printUserChoice (int userChoice) {
-    switch (userChoice) {
-        case 1:
-            printHelp();
-            break;
-        case 2:
-            printExchangeRates();
-            break;
-        case 3:
-            makeOffer();
-            break;
-        case 4:
-            placeBid();
-            break;
-        case 5:
-            printWallet();
-            break;
-        case 6:
-            advanceToNextTimeSlice();
-            break;
-        case 7:
-            exitProgram();
-            break;
-        default:
-            printMenu();
-            break;
-    }
-}
-
 //Build Map of function pointers
 std::map<int,void(*)()> userChoiceHandler () {
     std::map<int, void(*)()> outputMap;
@@ -109,17 +97,15 @@ std::map<int,void(*)()> userChoiceHandler () {
 
 // Main function
 int main () {
-
     int userChoice;
-
     while(userChoice != 7) {
-
         printMenu();
         userChoice = getUserChoice();
         userChoiceHandler()[userChoice]();
-
     }
 
-
+    OrderBookEntry order1{OrderBookType::Bid, "2017-11-01 14:48:01.123", "ETH/BTC", 0.01, 1000};
     return 0;
+
+
 }

@@ -14,7 +14,7 @@ pwd
 ```
 #### Building C++ file to .out file
 ```bash
-g++ *.cpp -o fileName
+g++ -std=c++11 *.cpp -o fileName
 ```
 #### running the compiled C++ file
 ```bash
