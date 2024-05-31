@@ -3,31 +3,10 @@
 #include <map>
 #include <string>
 
-enum OrderBookType {Bid, Ask};
+#include "OrderBookEntry.h"
 
-class OrderBookEntry {
-   public:
+std::vector<OrderBookEntry> orders;
 
-      OrderBookEntry(
-                    OrderBookType orderType,
-                    std::string timestamp,
-                    std::string product,
-                    double amount,
-                    double price)
-         {
-            this->orderType = orderType;
-            this->timestamp = timestamp;
-            this->product = product;
-            this->amount = amount;
-            this->price = price;
-         };
-
-      OrderBookType orderType;
-      std::string timestamp;
-      std::string product;
-      double amount;
-      double price;
-};
 
 void printMenu () {
     std::cout << "+ ----------------------------- +" << std::endl;
@@ -104,8 +83,6 @@ int main () {
         userChoiceHandler()[userChoice]();
     }
 
-    OrderBookEntry order1{OrderBookType::Bid, "2017-11-01 14:48:01.123", "ETH/BTC", 0.01, 1000};
+    orders.push_back(OrderBookEntry{OrderBookType::Bid, "2017-11-01 14:48:01.123", "ETH/BTC", 0.01, 1000});
     return 0;
-
-
 }
