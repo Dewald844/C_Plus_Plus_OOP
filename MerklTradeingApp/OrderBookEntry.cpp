@@ -12,4 +12,4 @@ OrderBookEntry::OrderBookEntry(
     timestamp(timestamp),
     product(product),
     amount(amount),
-    price(price) {};
+    price(price) {}

@@ -1,13 +1,14 @@
-#include <iostream>
 #include "MerkelMain.h"
-#include <map>
-#include <functional>
+
+#include <iostream>
+#include <vector>
 
 MerkelMain::MerkelMain() {}
 
 void MerkelMain::init(){
     std::cout << "Welcome to Merkel Trading App" << std::endl;
 
+    loadOrderbook();
     int userInput;
     while(true){
         printMenu();
@@ -17,6 +18,19 @@ void MerkelMain::init(){
             break;
         }
     }
+}
+
+void MerkelMain::loadOrderbook() {
+    std::cout << "Loading orderbook" << std::endl;
+    orderBook.push_back(
+        OrderBookEntry(
+            OrderBookType::Ask,
+            "2020-01-01 10:00:00",
+            "BTC",
+            1.0,
+            10000.0
+        )
+    );
 }
 
 void MerkelMain::printMenu () {
@@ -48,7 +62,8 @@ void MerkelMain::printHelp() {
 }
 
 void MerkelMain::printExchangeRates() {
-    std::cout << "Exchange rates: " << std::endl;
+    std::cout << "Exchange rates: " << orderBook.size() << std::endl;
+
 }
 
 void MerkelMain::makeOffer() {

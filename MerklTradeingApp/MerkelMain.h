@@ -1,11 +1,15 @@
+#pragma once
 #include <iostream>
-#include <map>
+#include "OrderBookEntry.h"
+#include <vector>
+
 class MerkelMain {
     public:
         MerkelMain();
         void init();
 
     private :
+        void loadOrderbook();
         void printHelp();
         void printExchangeRates();
         void makeOffer();
@@ -16,4 +20,5 @@ class MerkelMain {
         int getUserChoice();
         void printMenu();
         void userChoiceHandler(int userChoice);
+        std::vector<OrderBookEntry> orderBook;
 };
