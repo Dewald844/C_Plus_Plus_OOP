@@ -5,3 +5,11 @@ main
 a.out
 a.out
 MerklTradeingApp/main
+MerklTradeingApp/build/Debug/OrderBookEntry.o
+MerklTradeingApp/build/Debug/outDebug
+MerklTradeingApp/build/Debug/MerkelMain.o
+MerklTradeingApp/build/Debug/main.o
+.vscode/c_cpp_properties.json
+.vscode/settings.json
+.vscode/launch.json
+.vscode/settings.json
