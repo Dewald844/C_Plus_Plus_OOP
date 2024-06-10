@@ -4,12 +4,8 @@ class MerkelMain {
     public:
         MerkelMain();
         void init();
-        int getUserChoice();
-        void printMenu();
-        void userChoiceHandler(int userChoice);
 
     private :
-
         void printHelp();
         void printExchangeRates();
         void makeOffer();
@@ -17,5 +13,7 @@ class MerkelMain {
         void printWallet();
         void advanceToNextTimeSlice();
         void exitProgram();
-
+        int getUserChoice();
+        void printMenu();
+        void userChoiceHandler(int userChoice);
 };

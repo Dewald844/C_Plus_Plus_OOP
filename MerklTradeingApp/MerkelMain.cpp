@@ -5,7 +5,19 @@
 
 MerkelMain::MerkelMain() {}
 
-void MerkelMain::init(){}
+void MerkelMain::init(){
+    std::cout << "Welcome to Merkel Trading App" << std::endl;
+
+    int userInput;
+    while(true){
+        printMenu();
+        userInput = getUserChoice();
+        userChoiceHandler(userInput);
+        if(userInput == 7){
+            break;
+        }
+    }
+}
 
 void MerkelMain::printMenu () {
     std::cout << "+ ----------------------------- +" << std::endl;
@@ -84,7 +96,5 @@ void MerkelMain::userChoiceHandler(int userChoice) {
             break;
         default:
             std::cout << "Invalid choice" << std::endl;
-            printMenu();
-            getUserChoice();
     }
 }
