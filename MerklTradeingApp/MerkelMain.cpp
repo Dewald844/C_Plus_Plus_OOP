@@ -1,9 +1,8 @@
 #include "MerkelMain.h"
-#include "Tokeniser.h"
+#include "CSVReader.h"
 #include <iostream>
 #include <vector>
 #include <string>
-#include <fstream>
 
 
 MerkelMain::MerkelMain() {}
@@ -24,36 +23,10 @@ void MerkelMain::init(){
 }
 
 void MerkelMain::loadOrderbook() {
-    std::cout << "Loading orderbook" << std::endl;
-
-    std::vector<std::string> lineTokens;
-    std::ifstream file("data.csv");
-    std::string line;
-
-    Tokeniser tokeniser;
-
-    if (file.is_open()) {
-        while (getline(file, line)){
-            lineTokens = tokeniser.tokenise(line, ',');
-            if (lineTokens.size() != 5) {
-                std::cout << "Error: expected 5 tokens, found " << lineTokens.size() << std::endl;
-            } else {
-                try {
-                    double price = std::stod(lineTokens[3]);
-                    double amount = std::stod(lineTokens[4]);
-                    OrderBookEntry orderBookEntry(
-                        lineTokens[2] == "bid" ? OrderBookType::Bid : OrderBookType::Ask,
-                        lineTokens[0],
-                        lineTokens[1],
-                        amount,
-                        price
-                    );
-                    orderBook.push_back(orderBookEntry);
-                } catch (std::invalid_argument e) {
-                    std::cout << "Error: invalid argument" << std::endl;
-                }
-            }
-        }
+    try {
+        orderBook = CSVReader::readCSV("data.csv");
+    } catch (const std::exception e) {
+        std::cout << "Error: invalid argument : "<< e.what() << std::endl;
     }
 }
 

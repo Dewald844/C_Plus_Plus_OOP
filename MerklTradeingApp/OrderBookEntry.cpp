@@ -5,8 +5,9 @@ OrderBookEntry::OrderBookEntry(
     OrderBookType orderType,
     std::string timestamp,
     std::string product,
-    double amount,
-    double price
+    double price,
+    double amount
+
 ):
     orderType(orderType),
     timestamp(timestamp),
