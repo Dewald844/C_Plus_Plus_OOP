@@ -20,5 +20,6 @@ class MerkelMain {
         int getUserChoice();
         void printMenu();
         void userChoiceHandler(int userChoice);
+
         std::vector<OrderBookEntry> orderBook;
 };

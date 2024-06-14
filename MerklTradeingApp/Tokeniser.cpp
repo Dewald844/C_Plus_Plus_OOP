@@ -1,9 +1,10 @@
+#include "Tokeniser.h"
+
 #include <string>
 #include <vector>
 #include <iostream>
-#include <fstream>
 
-std::vector<std::string> tokenise(std::string csvLine, char separator){
+std::vector<std::string> Tokeniser::tokenise(std::string csvLine, char separator){
 
     std::vector<std::string> tokens;
 
@@ -32,29 +33,3 @@ std::vector<std::string> tokenise(std::string csvLine, char separator){
 
     return tokens;
 };
-
-int main () {
-
-    std::vector<std::string> tokens;
-
-    std::ifstream file("data.csv");
-
-    std::string line;
-
-    if (file.is_open()) {
-        while (getline(file, line)) {
-            std::cout << "Parsing line" << line << std::endl;
-            tokens = tokenise(line, ',');
-            if (tokens.size() != 5) {
-                cout << "Error: expected 5 tokens, found " << tokens.size() << endl;
-            }
-
-            double price = std::stod(tokens[3]);
-            double amount = std::stod(tokens[4]);
-
-        }
-        file.close();
-    }
-
-    return 0;
-}
