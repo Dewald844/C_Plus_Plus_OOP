@@ -14,3 +14,13 @@ OrderBookEntry::OrderBookEntry(
     product(product),
     amount(amount),
     price(price) {}
+
+OrderBookType OrderBookEntry::parseOrderType(const std::string& s) {
+    if (s == "bid") {
+        return OrderBookType::Bid;
+    } else if (s == "ask") {
+        return OrderBookType::Ask;
+    } else {
+        return OrderBookType::Unknown;
+    }
+}

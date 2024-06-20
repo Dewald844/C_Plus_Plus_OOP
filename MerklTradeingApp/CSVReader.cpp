@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-//CSVReader::CSVReader();
+CSVReader::CSVReader(){}
 
 std::vector<OrderBookEntry> CSVReader::readCSV(std::string csvFilePath) {
 
@@ -35,9 +35,11 @@ OrderBookEntry CSVReader::createOrderBookEntry(std::vector<std::string> lineToke
         std::cout << "Error: expected 5 tokens, found " << lineTokens.size() << std::endl;
         throw;
     } else {
+
+        OrderBookType orderType = OrderBookEntry::parseOrderType(lineTokens[2]);
+
         return OrderBookEntry(
-            // create constructor method in order book entry class
-            lineTokens[2] == "bid" ? OrderBookType::Bid : OrderBookType::Ask,
+            orderType,
             lineTokens[0],
             lineTokens[1],
             std::stod(lineTokens[3]),
@@ -74,4 +76,4 @@ std::vector<std::string> CSVReader::tokenise(std::string csvLine, char separator
     while(end != std::string::npos);
 
     return tokens;
-};
+}

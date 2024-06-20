@@ -2,10 +2,12 @@
 #include <string>
 #include <vector>
 
-enum OrderBookType {Bid, Ask};
+enum OrderBookType {Bid, Ask, Unknown};
 
 class OrderBookEntry {
    public:
+
+        static OrderBookType parseOrderType (const std::string& s);
 
         OrderBookEntry(
             OrderBookType orderType,
